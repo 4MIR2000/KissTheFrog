@@ -1,0 +1,360 @@
+<html>
+<head>
+<title>MainActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { }
+.s2 { color: rgb(0,128,0); font-weight: bold; }
+.s3 { color: rgb(0,0,255); }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+MainActivity.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<span class="s0">package </span><span class="s1">amir.kissthefrog; 
+ 
+ 
+</span><span class="s0">import </span><span class="s1">android.app.Dialog; 
+</span><span class="s0">import </span><span class="s1">android.content.SharedPreferences; 
+</span><span class="s0">import </span><span class="s1">android.graphics.Typeface; 
+</span><span class="s0">import </span><span class="s1">android.os.Handler; 
+</span><span class="s0">import </span><span class="s1">android.support.v7.app.ActionBarActivity; 
+</span><span class="s0">import </span><span class="s1">android.os.Bundle; 
+</span><span class="s0">import </span><span class="s1">android.view.Gravity; 
+</span><span class="s0">import </span><span class="s1">android.view.View; 
+</span><span class="s0">import </span><span class="s1">android.view.ViewGroup; 
+</span><span class="s0">import </span><span class="s1">android.widget.FrameLayout; 
+</span><span class="s0">import </span><span class="s1">android.widget.ImageView; 
+</span><span class="s0">import </span><span class="s1">android.widget.RelativeLayout; 
+</span><span class="s0">import </span><span class="s1">android.widget.TextView; 
+</span><span class="s0">import </span><span class="s1">android.widget.Toast; 
+ 
+</span><span class="s0">import </span><span class="s1">java.util.Random; 
+ 
+ 
+</span><span class="s0">public class </span><span class="s1">MainActivity </span><span class="s0">extends </span><span class="s1">ActionBarActivity </span><span class="s0">implements </span><span class="s1">View.OnClickListener { 
+   </span><span class="s0">private int </span><span class="s1">points; 
+   </span><span class="s0">private int </span><span class="s1">round; 
+   </span><span class="s0">private int </span><span class="s1">countdown; 
+   </span><span class="s0">private </span><span class="s1">Random rnd = </span><span class="s0">new </span><span class="s1">Random(); 
+   </span><span class="s0">private </span><span class="s1">Handler handler = </span><span class="s0">new </span><span class="s1">Handler(); 
+   </span><span class="s0">private </span><span class="s1">ImageView frog; 
+   </span><span class="s0">private </span><span class="s1">Typeface ttf; 
+   </span><span class="s0">private boolean </span><span class="s1">help; 
+   </span><span class="s0">private int </span><span class="s1">highscore; 
+    </span><span class="s0">private static final int</span><span class="s1">[] images_green = {R.drawable.distract1, R.drawable.distract2, 
+            R.drawable.distract3,R.drawable.distract4, 
+            R.drawable.distract5,R.drawable.distract6, 
+            R.drawable.distract7,R.drawable.distract8}; 
+ 
+    </span><span class="s0">private static final int</span><span class="s1">[] images_darkgreen = {R.drawable.distract1_darkgreen, R.drawable.distract2_darkgreen, 
+            R.drawable.distract3_darkgreen,R.drawable.distract4_darkgreen, 
+            R.drawable.distract5_darkgreen,R.drawable.distract6_darkgreen, 
+            R.drawable.distract7_darkgreen,R.drawable.distract8_darkgreen}; 
+ 
+ 
+    </span><span class="s0">private static final int</span><span class="s1">[] images_blue = {R.drawable.distract1_blue, R.drawable.distract2_blue, 
+            R.drawable.distract3_blue,R.drawable.distract4_blue, 
+            R.drawable.distract5_blue,R.drawable.distract6_blue, 
+            R.drawable.distract7_blue,R.drawable.distract8_blue}; 
+ 
+    </span><span class="s0">private static final int</span><span class="s1">[] images_pink = {R.drawable.distract1_pink, R.drawable.distract2_pink, 
+            R.drawable.distract3_pink,R.drawable.distract4_pink, 
+            R.drawable.distract5_pink,R.drawable.distract6_pink, 
+            R.drawable.distract7_pink,R.drawable.distract8_pink}; 
+ 
+    </span><span class="s0">private static final int</span><span class="s1">[] images_light_blue = {R.drawable.distract1_light_blue, R.drawable.distract2_light_blue, 
+            R.drawable.distract3_light_blue,R.drawable.distract4_light_blue, 
+            R.drawable.distract5_light_blue,R.drawable.distract6_light_blue, 
+            R.drawable.distract7_light_blue,R.drawable.distract8_light_blue}; 
+ 
+    </span><span class="s0">private static final int</span><span class="s1">[] images_yellow = {R.drawable.distract1_yellow, R.drawable.distract2_yellow, 
+            R.drawable.distract3_yellow,R.drawable.distract4_yellow, 
+            R.drawable.distract5_yellow,R.drawable.distract6_yellow, 
+            R.drawable.distract7_yellow,R.drawable.distract8_yellow}; 
+ 
+    </span><span class="s0">private static final int</span><span class="s1">[] images_red = {R.drawable.distract1_red, R.drawable.distract2_red, 
+            R.drawable.distract3_red,R.drawable.distract4_red, 
+            R.drawable.distract5_red,R.drawable.distract6_red, 
+            R.drawable.distract7_red,R.drawable.distract8_red}; 
+ 
+ 
+ 
+ 
+    @Override 
+    </span><span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) { 
+        </span><span class="s0">super</span><span class="s1">.onCreate(savedInstanceState); 
+        setContentView(R.layout.activity_main); 
+        ttf = Typeface.createFromAsset(getAssets(), </span><span class="s2">&quot;JandaManateeSolid.ttf&quot;</span><span class="s1">); 
+        showStartFragment(); 
+        ((TextView)findViewById(R.id.help)).setTypeface(ttf); 
+        findViewById(R.id.help).setOnClickListener(</span><span class="s0">this</span><span class="s1">); 
+        ((TextView)findViewById(R.id.highscore_text)).setTypeface(ttf); 
+        ((TextView)findViewById(R.id.highscore_start)).setTypeface(ttf); 
+        loadHighscore(); 
+        fillTextView(R.id.highscore_start, Integer.toString(highscore)); 
+ 
+ 
+    } 
+ 
+       </span><span class="s0">public void </span><span class="s1">newGame(){ 
+         points = </span><span class="s3">0</span><span class="s1">; 
+         round = </span><span class="s3">1</span><span class="s1">; 
+         initRound(); 
+    } 
+ 
+        </span><span class="s0">public void </span><span class="s1">initRound(){ 
+ 
+          countdown=</span><span class="s3">10</span><span class="s1">; 
+          ViewGroup container = (ViewGroup) findViewById(R.id.container); 
+          container.removeAllViews(); 
+          WimmelView wv = </span><span class="s0">new </span><span class="s1">WimmelView(</span><span class="s0">this</span><span class="s1">); 
+          </span><span class="s0">if</span><span class="s1">(round==</span><span class="s3">1 </span><span class="s1">|| round==</span><span class="s3">2</span><span class="s1">) { 
+              wv.setImages(images_green); 
+          } 
+          </span><span class="s0">if</span><span class="s1">(round==</span><span class="s3">3</span><span class="s1">|| round==</span><span class="s3">4</span><span class="s1">){ 
+                wv.setImages(images_darkgreen); 
+          } 
+ 
+            </span><span class="s0">if</span><span class="s1">(round==</span><span class="s3">5</span><span class="s1">|| round==</span><span class="s3">6</span><span class="s1">){ 
+                wv.setImages(images_blue); 
+            } 
+ 
+            </span><span class="s0">if</span><span class="s1">(round==</span><span class="s3">7</span><span class="s1">|| round==</span><span class="s3">8</span><span class="s1">){ 
+                wv.setImages(images_pink); 
+            } 
+ 
+            </span><span class="s0">if</span><span class="s1">(round==</span><span class="s3">9 </span><span class="s1">|| round==</span><span class="s3">10</span><span class="s1">){ 
+                wv.setImages(images_light_blue); 
+            } 
+ 
+            </span><span class="s0">if</span><span class="s1">(round==</span><span class="s3">11 </span><span class="s1">|| round==</span><span class="s3">12 </span><span class="s1">){ 
+                wv.setImages(images_yellow); 
+            } 
+            </span><span class="s0">if</span><span class="s1">(round&gt;</span><span class="s3">12</span><span class="s1">){ 
+                wv.setImages(images_red); 
+            } 
+ 
+          container.addView(wv, ViewGroup.LayoutParams.MATCH_PARENT, 
+                           ViewGroup.LayoutParams.MATCH_PARENT); 
+          wv.setImageCount(</span><span class="s3">8</span><span class="s1">*(</span><span class="s3">10</span><span class="s1">+round)); 
+ 
+            frog = </span><span class="s0">new </span><span class="s1">ImageView(</span><span class="s0">this</span><span class="s1">); 
+            frog.setId(R.id.Frog_ID); 
+            </span><span class="s0">if</span><span class="s1">(round ==</span><span class="s3">1</span><span class="s1">|| round == </span><span class="s3">2</span><span class="s1">){ 
+               frog.setImageResource(R.drawable.frog);} 
+ 
+            </span><span class="s0">if</span><span class="s1">(round ==</span><span class="s3">3 </span><span class="s1">|| round == </span><span class="s3">4</span><span class="s1">){ 
+              frog.setImageResource(R.drawable.frog_darkgreen);} 
+ 
+            </span><span class="s0">if</span><span class="s1">(round==</span><span class="s3">5</span><span class="s1">|| round==</span><span class="s3">6</span><span class="s1">){ 
+              frog.setImageResource(R.drawable.frog_blue); 
+            } 
+ 
+            </span><span class="s0">if</span><span class="s1">(round==</span><span class="s3">7</span><span class="s1">|| round==</span><span class="s3">8</span><span class="s1">){ 
+                frog.setImageResource(R.drawable.frog_pink); 
+            } 
+ 
+            </span><span class="s0">if</span><span class="s1">(round==</span><span class="s3">9</span><span class="s1">|| round==</span><span class="s3">10</span><span class="s1">){ 
+                frog.setImageResource(R.drawable.frog_light_blue); 
+            } 
+ 
+            </span><span class="s0">if</span><span class="s1">(round==</span><span class="s3">11 </span><span class="s1">|| round==</span><span class="s3">12 </span><span class="s1">){ 
+                frog.setImageResource(R.drawable.frog_yellow); 
+            } 
+ 
+            </span><span class="s0">if</span><span class="s1">(round&gt;</span><span class="s3">12</span><span class="s1">){ 
+                frog.setImageResource(R.drawable.frog_red); 
+            } 
+ 
+            frog.setScaleType(ImageView.ScaleType.CENTER); 
+            </span><span class="s0">float </span><span class="s1">scale = getResources().getDisplayMetrics().density; 
+ 
+            FrameLayout.LayoutParams lp = </span><span class="s0">new </span><span class="s1">FrameLayout.LayoutParams 
+                    (Math.round(</span><span class="s3">64</span><span class="s1">*scale),Math.round(</span><span class="s3">61</span><span class="s1">*scale)); 
+ 
+            lp.leftMargin = rnd.nextInt(container.getWidth()-</span><span class="s3">64</span><span class="s1">); 
+            lp.topMargin = rnd.nextInt(container.getHeight()-</span><span class="s3">61</span><span class="s1">); 
+            lp.gravity =Gravity.TOP + Gravity.LEFT; 
+            frog.setOnClickListener(</span><span class="s0">this</span><span class="s1">); 
+            container.addView(frog, lp); 
+ 
+ 
+            container.addView( 
+                    getLayoutInflater(). 
+                            inflate(R.layout.activity_main, </span><span class="s0">null</span><span class="s1">)); 
+ 
+ 
+            update(); 
+            handler.postDelayed(runnable, </span><span class="s3">1000</span><span class="s1">-round*</span><span class="s3">50</span><span class="s1">); 
+       } 
+ 
+       </span><span class="s0">private void </span><span class="s1">update(){ 
+ 
+        fillTextView(R.id.points, Integer.toString(points)); 
+        fillTextView(R.id.round, Integer.toString(round)); 
+        loadHighscore(); 
+        fillTextView(R.id.countdown, Integer.toString(countdown*</span><span class="s3">1000</span><span class="s1">)); 
+        fillTextView(R.id.highscore, Integer.toString(highscore)); 
+           ((TextView)findViewById(R.id.countdown)).setTypeface(ttf); 
+           ((TextView)findViewById(R.id.round)).setTypeface(ttf); 
+           ((TextView)findViewById(R.id.points)).setTypeface(ttf); 
+           ((TextView)findViewById(R.id.highscore)).setTypeface(ttf); 
+ 
+    } 
+ 
+        </span><span class="s0">private void </span><span class="s1">fillTextView(</span><span class="s0">int </span><span class="s1">id, String text){ 
+            TextView tv=(TextView) findViewById(id); 
+            tv.setText(text); 
+ 
+        } 
+ 
+ 
+         </span><span class="s0">private void </span><span class="s1">showStartFragment(){ 
+            ViewGroup container = (ViewGroup) findViewById(R.id.container); 
+            container.removeAllViews(); 
+            container.addView( 
+                    getLayoutInflater(). 
+                    inflate(R.layout.fragment_start,</span><span class="s0">null</span><span class="s1">)); 
+             container.findViewById(R.id.start).setOnClickListener(</span><span class="s0">this</span><span class="s1">); 
+             ((TextView)findViewById(R.id.title)).setTypeface(ttf); 
+             ((TextView)findViewById(R.id.start)).setTypeface(ttf); 
+ 
+ 
+        } 
+ 
+         </span><span class="s0">private void </span><span class="s1">showGameOverFragment(){ 
+            ViewGroup container =(ViewGroup) findViewById(R.id.container); 
+            container.addView( 
+                    getLayoutInflater(). 
+                    inflate(R.layout.fragment_gameover,</span><span class="s0">null</span><span class="s1">)); 
+ 
+            container.findViewById(R.id.play_again).setOnClickListener(</span><span class="s0">this</span><span class="s1">); 
+             ((TextView)findViewById(R.id.gameOver)).setTypeface(ttf); 
+             ((TextView)findViewById(R.id.play_again)).setTypeface(ttf); 
+ 
+        } 
+ 
+         </span><span class="s0">private void </span><span class="s1">countdown(){ 
+             countdown--; 
+             update(); 
+             </span><span class="s0">if</span><span class="s1">(countdown &lt;= </span><span class="s3">0</span><span class="s1">){ 
+                 frog.setOnClickListener(</span><span class="s0">null</span><span class="s1">); 
+                 </span><span class="s0">if</span><span class="s1">(points&gt;highscore) { 
+                     saveHighscore(points); 
+                     update(); 
+ 
+                 } 
+                 showGameOverFragment(); 
+ 
+ 
+             }</span><span class="s0">else</span><span class="s1">{ 
+                 handler.postDelayed(runnable, </span><span class="s3">1000 </span><span class="s1">- round * </span><span class="s3">50</span><span class="s1">); 
+                 } 
+             } 
+ 
+          </span><span class="s0">private void </span><span class="s1">loadHighscore(){ 
+              SharedPreferences sp = getPreferences(MODE_PRIVATE); 
+              highscore=sp.getInt(</span><span class="s2">&quot;highscore&quot;</span><span class="s1">,</span><span class="s3">0</span><span class="s1">); 
+          } 
+ 
+          </span><span class="s0">private void </span><span class="s1">saveHighscore(</span><span class="s0">int </span><span class="s1">points){ 
+              highscore=points; 
+              SharedPreferences sp = getPreferences(MODE_PRIVATE); 
+              SharedPreferences.Editor e = sp.edit(); 
+              e.putInt(</span><span class="s2">&quot;highscore&quot;</span><span class="s1">, highscore); 
+              e.commit(); 
+          } 
+ 
+          </span><span class="s0">private </span><span class="s1">Runnable runnable = </span><span class="s0">new </span><span class="s1">Runnable() { 
+              @Override 
+              </span><span class="s0">public void </span><span class="s1">run() { 
+                  countdown(); 
+              } 
+          }; 
+ 
+          @Override 
+          </span><span class="s0">protected void </span><span class="s1">onPause(){ 
+              </span><span class="s0">super</span><span class="s1">.onPause(); 
+              handler.removeCallbacks(runnable); 
+          } 
+ 
+ 
+ 
+    @Override 
+           </span><span class="s0">public void </span><span class="s1">onClick(View view) { 
+        </span><span class="s0">if </span><span class="s1">(view.getId() == R.id.start) { 
+            startGame(); 
+        } </span><span class="s0">else </span><span class="s1">{ 
+            </span><span class="s0">if </span><span class="s1">(view.getId() == R.id.play_again) { 
+                showStartFragment(); 
+ 
+ 
+            }</span><span class="s0">else if</span><span class="s1">(view.getId()==R.id.Frog_ID){ 
+                kissFrog(); 
+ 
+ 
+            }</span><span class="s0">else if</span><span class="s1">(view.getId()==R.id.help){ 
+                help=</span><span class="s0">true</span><span class="s1">; 
+                showTutorial(); 
+            } 
+        } 
+    } 
+ 
+    </span><span class="s0">private void </span><span class="s1">kissFrog() { 
+        Toast toast = </span><span class="s0">new </span><span class="s1">Toast(</span><span class="s0">this</span><span class="s1">); 
+        toast.setGravity(Gravity.CENTER,</span><span class="s3">0</span><span class="s1">,</span><span class="s3">0</span><span class="s1">); 
+        toast.setDuration(toast.LENGTH_SHORT); 
+ 
+        TextView textView = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">); 
+        textView.setText(R.string.kissed); 
+        textView.setTextColor(getResources().getColor(R.color.points)); 
+        textView.setTextSize(</span><span class="s3">48f</span><span class="s1">); 
+        textView.setTypeface(ttf); 
+ 
+        toast.setView(textView); 
+        toast.show(); 
+        handler.removeCallbacks(runnable); 
+        points+=countdown*</span><span class="s3">1000</span><span class="s1">; 
+        round++; 
+        initRound(); 
+    } 
+ 
+    </span><span class="s0">private void </span><span class="s1">showTutorial(){ 
+ 
+        </span><span class="s0">final </span><span class="s1">Dialog dialog = </span><span class="s0">new </span><span class="s1">Dialog(</span><span class="s0">this</span><span class="s1">, 
+        android.R.style.Theme_Translucent_NoTitleBar_Fullscreen); 
+        dialog.setContentView(R.layout.dialog_tuturial); 
+        ((TextView)(dialog.findViewById(R.id.text))).setTypeface(ttf); 
+        ((TextView)(dialog.findViewById(R.id.start))).setTypeface(ttf); 
+        dialog.findViewById(R.id.start).setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener(){ 
+ 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onClick(View view){ 
+                dialog.dismiss(); 
+                startGame(); 
+            } 
+ 
+ 
+        }); 
+ 
+        dialog.show(); 
+ 
+    } 
+ 
+    </span><span class="s0">public void </span><span class="s1">startGame(){ 
+          newGame(); 
+ 
+      } 
+} 
+ 
+</span></pre>
+</body>
+</html>

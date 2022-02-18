@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/container_start"
+        android:background="@drawable/background">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/app_name"
+            android:id="@+id/title"
+            android:textSize="40dp"
+            android:textColor="@color/title"
+            android:layout_marginBottom="50dp"
+            android:layout_above="@+id/frog_start"
+            android:layout_centerHorizontal="true"
+            android:password="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/start"
+            android:id="@+id/start"
+            android:background="@drawable/button_start"
+            android:textColor="#ffedfffd"
+            android:textSize="40dp"
+            android:layout_marginTop="13dp"
+            android:layout_below="@+id/frog_start"
+            android:layout_centerHorizontal="true" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/frog_start"
+            android:background="@drawable/frog"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/wolke1"
+            android:background="@drawable/wolke"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/frog_start"
+            android:layout_toStartOf="@+id/frog_start" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/wolke2"
+            android:background="@drawable/wolke"
+            android:layout_alignTop="@+id/wolke1"
+            android:layout_toRightOf="@+id/frog_start"
+            android:layout_toEndOf="@+id/frog_start" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:id="@+id/imageView2"
+            android:background="@drawable/seerosenblatt"
+            android:layout_alignTop="@+id/start"
+            android:layout_alignRight="@+id/wolke2"
+            android:layout_alignEnd="@+id/wolke2" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:id="@+id/imageView3"
+            android:background="@drawable/seerosenblatt"
+            android:layout_alignLeft="@+id/wolke1"
+            android:layout_alignStart="@+id/wolke1"
+            android:layout_alignTop="@+id/start" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="\?"
+            android:id="@+id/help"
+            android:layout_marginBottom="32dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/dialog_background"
+            android:textSize="40dp"
+            android:textColor="@color/title"
+            android:password="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Highscore ==>"
+            android:id="@+id/highscore_text"
+            android:textColor="#00ff7f"
+            android:textSize="18dp"
+            android:layout_alignTop="@+id/highscore_start"
+            android:layout_alignRight="@+id/wolke1"
+            android:layout_alignEnd="@+id/wolke1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="000000"
+            android:id="@+id/highscore_start"
+            android:layout_marginTop="25dp"
+            android:textColor="#ffff00"
+            android:textSize="18dp"
+            android:layout_alignTop="@+id/wolke2"
+            android:layout_alignLeft="@+id/imageView2"
+            android:layout_alignStart="@+id/imageView2" />
+
+
+    </RelativeLayout>
+</RelativeLayout>

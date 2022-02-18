@@ -1,0 +1,94 @@
+<html>
+<head>
+<title>WimmelView.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { }
+.s2 { color: rgb(128,128,128); font-style: italic; }
+.s3 { color: rgb(0,0,255); }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+WimmelView.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<span class="s0">package </span><span class="s1">amir.kissthefrog; 
+ 
+</span><span class="s0">import </span><span class="s1">android.app.AlertDialog; 
+</span><span class="s0">import </span><span class="s1">android.content.Context; 
+</span><span class="s0">import </span><span class="s1">android.graphics.Bitmap; 
+</span><span class="s0">import </span><span class="s1">android.graphics.BitmapFactory; 
+</span><span class="s0">import </span><span class="s1">android.graphics.Canvas; 
+</span><span class="s0">import </span><span class="s1">android.graphics.Paint; 
+</span><span class="s0">import </span><span class="s1">android.media.Image; 
+</span><span class="s0">import </span><span class="s1">android.view.View; 
+</span><span class="s0">import </span><span class="s1">android.widget.ImageView; 
+</span><span class="s0">import </span><span class="s1">android.widget.Toast; 
+ 
+</span><span class="s0">import </span><span class="s1">java.util.Random; 
+ 
+</span><span class="s2">/** 
+ * Created by Amir on 30.03.2015. 
+ */</span><span class="s1"> 
+</span><span class="s0">public class </span><span class="s1">WimmelView </span><span class="s0">extends </span><span class="s1">View{ 
+    Random rnd; 
+    </span><span class="s0">private long </span><span class="s1">randomSeed=</span><span class="s3">1</span><span class="s1">; 
+    </span><span class="s0">private int </span><span class="s1">imageCount; 
+ 
+    </span><span class="s0">private </span><span class="s1">Paint paint = </span><span class="s0">new </span><span class="s1">Paint(); 
+ 
+ 
+    </span><span class="s0">private int</span><span class="s1">[] images2; 
+ 
+    </span><span class="s0">public void </span><span class="s1">setImages(</span><span class="s0">int</span><span class="s1">[] image){ 
+        images2 = image; 
+ 
+    } 
+ 
+    </span><span class="s0">public void </span><span class="s1">setImageCount(</span><span class="s0">int </span><span class="s1">imageCount){ 
+        </span><span class="s0">this</span><span class="s1">.imageCount = imageCount; 
+        randomSeed = System.currentTimeMillis(); 
+        invalidate(); 
+    } 
+ 
+    </span><span class="s0">public </span><span class="s1">WimmelView(Context context){ 
+        </span><span class="s0">super</span><span class="s1">(context); 
+        paint.setAntiAlias(</span><span class="s0">true</span><span class="s1">); 
+ 
+    } 
+ 
+    @Override 
+    </span><span class="s0">protected void </span><span class="s1">onDraw(Canvas canvas){ 
+        </span><span class="s0">super</span><span class="s1">.onDraw(canvas); 
+        rnd = </span><span class="s0">new </span><span class="s1">Random(randomSeed); 
+ 
+        </span><span class="s0">for</span><span class="s1">(</span><span class="s0">int </span><span class="s1">image: images2){ 
+            Bitmap bitmap = BitmapFactory.decodeResource(getResources(),image); 
+ 
+          </span><span class="s0">for</span><span class="s1">(</span><span class="s0">int </span><span class="s1">i=</span><span class="s3">0</span><span class="s1">; i&lt;imageCount/images2.length;i++){ 
+             </span><span class="s0">float </span><span class="s1">left = (</span><span class="s0">float</span><span class="s1">) (rnd.nextFloat() 
+                       * (getWidth() - bitmap.getWidth())); 
+ 
+             </span><span class="s0">float </span><span class="s1">top = (</span><span class="s0">float</span><span class="s1">) (rnd.nextFloat()) 
+                       *(getHeight() - bitmap.getHeight()); 
+ 
+             canvas.drawBitmap(bitmap, left, top, paint); 
+         } 
+ 
+            bitmap.recycle(); 
+ 
+ 
+    } 
+ 
+ 
+ 
+} 
+}</span></pre>
+</body>
+</html>

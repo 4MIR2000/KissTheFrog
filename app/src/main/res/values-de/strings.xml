@@ -1,0 +1,13 @@
+<resources>
+    <item type="id" name="Frog_ID"></item>
+    <string name="app_name">Küsse Den Frosch</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="kissed">geküsst!</string>
+    <string name="start">Start</string>
+    <string name="gameover">Game Over</string>
+    <string name="playagain">PLAY AGAIN</string>
+    <string name="tutorial">Can you find and kiss
+                            the frog before he jumps
+                            to another lover?</string>
+</resources>
